@@ -24,8 +24,8 @@ class USSD extends Controller
         }
         if(isset($level[0]) && $level[0] == 1  && !isset($level[1]))
         {
-            $response="CON Account Bal: $500 \n";
-            $response .= "0. back";
+            $response="END Account Bal: $500 \n";
+            //$response .= "0. back";
         }
         if(isset($level[0]) && $level[0] == 1  && isset($level[1]) && $level[1] == 0)
         {
@@ -37,10 +37,10 @@ class USSD extends Controller
         }
         if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
         {
-            $response="CON Select bank account \n";
+            $response="END Select bank account \n";
             $response .= "1. GT Bank \n";
             $response .= "2. Zenith Bank \n";
-            $response .= "0. back";
+            //$response .= "0. back";
         }
         if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
         {
