@@ -9,7 +9,7 @@ class USSD extends Controller
     public static function ussd(Request $request)
     {
     	 $request->all();
-    	$text=$request->input('USSD_STRING');
+    	$text=$request->input('text');
         $phonenumber=$request->input('MSISDN');
         $serviceCode=$request->input('serviceCode');
         $level = explode("*", $text);
