@@ -16,7 +16,7 @@ class USSD extends Controller
         //if (isset($text)) {
    
         if ( $text == "" ) {
-            $response="CON Welcome to the registration portal.\nPlease enter you full name\n";
+            $response="CON Welcome to the Abdirahman Mpesa portal.\n";
             $response .= "1. account balance\n";
             $response .= "2. Transfer \n";
             $response .= "3. Airtime topup \n";
