@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('ussd', 'USSD@ussd');
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('ussd', 'USSD@ussd');
