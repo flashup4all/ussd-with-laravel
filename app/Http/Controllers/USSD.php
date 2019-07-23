@@ -37,27 +37,32 @@ class USSD extends Controller
         }
         if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
         {
-            $response="CON Select bank account \n";
-            $response .= "1. GT Bank \n";
-            $response .= "2. Zenith Bank \n";
-            $response .= "0. back";
+            $response="CON Enter Mobile Number \n";
+           
         }
-        if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
+        /*if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
         {
             $response="CON Select bank account \n";
             $response .= "1. GT Bank \n";
             $response .= "2. Zenith Bank \n";
             $response .= "0. back";
-        }
-        if(isset($level[0]) && $level[0] == 2  && isset($level[1]) && $level[1] == 0)
+        }*/
+        
+        if(
+            isset($level[0]) && $level[0] == 2  && isset($level[1]) && strlen((string)$level[1]) > 1 && isset($level[2]) && strlen((string)$level[2]) > 1)
         {
-            $response="CON Welcome to the registration portal.\nPlease enter you full name\n";
-            $response .= "1. account balance\n";
-            $response .= "2. Transfer \n";
-            $response .= "3. Airtime topup \n";
-            $response .= "0. Exit";
+           $response="CON enter pin \n";
+            
+            // $response .= "0. back";
         }
-        if(isset($level[0]) && $level[0] == 2  && isset($level[1]) && $level[1] == 1)
+        if(
+            isset($level[0]) && $level[0] == 2  && isset($level[1]) && strlen((string)$level[1]) > 1 && isset($level[2]) && strlen((string)$level[2]) > 1 && isset($level[3]) && strlen((string)$level[3]) > 1)
+        {
+           $response="END Transaction Succesfull \n";
+            
+            // $response .= "0. back";
+        }
+        if(isset($level[0]) && $level[0] == 2  && isset($level[1]) && $level[1] == 1 && isset($level[2]))
         {
             $response="CON enter account number \n";
             
@@ -71,7 +76,7 @@ class USSD extends Controller
             $response .= "0. back";
         }
         
-        else if(isset($level[2]) && $level[2]!="" && !isset($level[3])){
+       /* else if(isset($level[2]) && $level[2]!="" && !isset($level[3])){
             //Save data to database
             $data=array(
                 'phonenumber'=>$phonenumber,
@@ -81,7 +86,7 @@ class USSD extends Controller
                 );
             
             $response="END Thank you ".$level[0]." for registering.\nWe will keep you updated"; 
-	    }
+	    }*/
 	        header('Content-type: text/plain');
 	        echo $response;
 	    //}
