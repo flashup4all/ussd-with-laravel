@@ -16,11 +16,11 @@ class USSD extends Controller
         //if (isset($text)) {
    
         if ( $text == "" ) {
-            $response="CON Welcome to the ORABANK portal.\n";
-            $response .= "1. account balance\n";
-            $response .= "2. Transfer \n";
-            $response .= "3. Airtime topup \n";
-            $response .= "0. Exit";
+            $response="EMD Welcome to the ORABANK portal.\n";
+            // $response .= "1. account balance\n";
+            // $response .= "2. Transfer \n";
+            // $response .= "3. Airtime topup \n";
+            // $response .= "0. Exit";
         }
         if(isset($level[0]) && $level[0] == 1  && !isset($level[1]))
         {
