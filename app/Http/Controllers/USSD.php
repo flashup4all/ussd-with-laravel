@@ -16,7 +16,7 @@ class USSD extends Controller
         //if (isset($text)) {
    
         if ( $text == "" ) {
-            $response="EMD Welcome to the my bank portal.\n";
+            $response="CON Welcome to the my bank portal.\n";
             $response .= "1. account balance\n";
             $response .= "2. Transfer \n";
             $response .= "3. Airtime topup \n";
