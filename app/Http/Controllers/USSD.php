@@ -16,11 +16,11 @@ class USSD extends Controller
         //if (isset($text)) {
    
         if ( $text == "" ) {
-            $response="EMD Welcome to the ORABANK portal.\n";
-            // $response .= "1. account balance\n";
-            // $response .= "2. Transfer \n";
-            // $response .= "3. Airtime topup \n";
-            // $response .= "0. Exit";
+            $response="EMD Welcome to the my bank portal.\n";
+            $response .= "1. account balance\n";
+            $response .= "2. Transfer \n";
+            $response .= "3. Airtime topup \n";
+            $response .= "0. Exit";
         }
         if(isset($level[0]) && $level[0] == 1  && !isset($level[1]))
         {
@@ -40,13 +40,13 @@ class USSD extends Controller
             $response="CON Enter Mobile Number \n";
            
         }
-        /*if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
+        if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
         {
             $response="CON Select bank account \n";
             $response .= "1. GT Bank \n";
             $response .= "2. Zenith Bank \n";
             $response .= "0. back";
-        }*/
+        }
         
         if(
             isset($level[0]) && $level[0] == 2  && isset($level[1]) && strlen((string)$level[1]) > 1 && isset($level[2]) && strlen((string)$level[2]) > 1)
