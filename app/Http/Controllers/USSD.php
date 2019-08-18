@@ -19,7 +19,9 @@ class USSD extends Controller
             $response="CON Welcome to the my bank portal.\n";
             $response .= "1. account balance\n";
             $response .= "2. Transfer \n";
+            $response .= "3. Fund wallet \n";
             $response .= "3. Airtime topup \n";
+            $response .= "4. Airtime recharge \n";
             $response .= "0. Exit";
         }
         if(isset($level[0]) && $level[0] == 1  && !isset($level[1]))
