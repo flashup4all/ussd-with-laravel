@@ -15,7 +15,7 @@ class USSD extends Controller
         $level = explode("*", $text);
         //if (isset($text)) {
     
-        $user = true;
+        $user = false;
         if(!$user)
         {
             if ( $text == "" ) {
