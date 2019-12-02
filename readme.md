@@ -16,6 +16,8 @@ This is app has basic USSD session pages that simulate a banking transfer proces
 - install dependencies 'composer install'
 - serve the app 'php artisan serve'
 
+app/Http/Controller/UssdController.php
+show basic work flow
 
 ## License
 
