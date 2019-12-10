@@ -27,7 +27,7 @@ class USSD extends Controller
             $response .= "5. Computer accessories \n";
             $response .= "0. Exit";
         }
-        if(isset($level[0]) /*&& $level[0] == 2*/  && !isset($level[1]))
+        if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
         {
             $response="CON Health & Beauty \n";
             $response .="1. Beard Oil \n";
@@ -36,8 +36,24 @@ class USSD extends Controller
             $response .="4. Makeup \n";
             $response .= "0. back";
         }
-        if(isset($level[0])/* && $level[0] == 2*/  && isset($level[1]))
+        if(isset($level[0]) && $level[0] == 1  && !isset($level[1]))
         {
+            $response="CON Mobile phones & accessoriese \n";
+            $response .="1. HeadPhones \n";
+            $response .="2. Car charger \n";
+            $response .="3. Iphonex Pro \n";
+            $response .="4. Blackberry \n";
+            $response .= "0. back";
+        }
+        if(isset($level[0]) && $level[0] == 2  && isset($level[1]))
+        {
+            $response="END thanks \n";
+            $response .="Request Confirmed \n";
+           
+        }
+        if(isset($level[0]) && $level[0] == 1  && isset($level[1]))
+        {
+            
             $response="END thanks \n";
             $response .="Request Confirmed \n";
            
