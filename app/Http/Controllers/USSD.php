@@ -1,61 +1,50 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class USSD extends Controller
 {
-     public static function ussd(Request $request)
+    public static function ussd(Request $request)
     {
         //$request->all();
         $text=$request->input('text');
-        $sessionId = $request->input('sessionId');
-        $phonenumber = $request->input('phoneNumber');
-        $sessionId = $request->input('sessionId');
-        $serviceCode = $request->input('serviceCode');
-        $networkCode = $request->input('networkCode');
+        $session_id = $request->input('sessionId');
+        $phone_number = $request->input('phoneNumber');
+        $service_code = $request->input('serviceCode');
+        $network_code = $request->input('networkCode');
         $level = explode("*", $text);
         //if (isset($text)) {
    
         if ( $text == "" ) {
-            $response="CON Welcome Ink\n";
-            $response .= "1. Mobile phones & accessoriese\n";
-            $response .= "2. Heath & Beauty \n";
-            $response .= "3. Home & Kitchen \n";
-            $response .= "4. Fashion \n";
-            $response .= "5. Computer accessories \n";
+            $response="CON Welcome John Doe\n";
+            $response .= "1. Account Bal\n";
+            $response .= "2. Transfer \n";
+            $response .= "3. Airtime Recharge \n";
             $response .= "0. Exit";
         }
-        if(isset($level[0]) && $level[0] == 2  && !isset($level[1]))
+        if(isset($level[0]) && $level[0] == 1 && !isset($level[1]))
         {
-            $response="CON Health & Beauty \n";
-            $response .="1. Beard Oil \n";
-            $response .="2. Facial Wipe \n";
-            $response .="3. Perfumes \n";
-            $response .="4. Makeup \n";
+            $response="END Your account Bal: \n";
+            $response .=" #50,000.00 \n";
+        }
+        if(isset($level[0]) && $level[0] == 2 && !isset($level[1]))
+        {
+            $response="CON Select Bank \n";
+            $response .="1. GTB\n";
+            $response .="2. First Bank \n";
+            $response .="3. Access Bank \n";
+            $response .="4. FCMB \n";
             $response .= "0. back";
         }
-        if(isset($level[0]) && $level[0] == 1  && !isset($level[1]))
+        if(isset($level[0]) && $level[0] == 2  && isset($level[1]) && !isset($level[2]))
         {
-            $response="CON Mobile phones & accessoriese \n";
-            $response .="1. HeadPhones \n";
-            $response .="2. Car charger \n";
-            $response .="3. Iphonex Pro \n";
-            $response .="4. Blackberry \n";
-            $response .= "0. back";
-        }
-        if(isset($level[0]) && $level[0] == 2  && isset($level[1]))
-        {
-            $response="END thanks \n";
-            $response .="Request Confirmed \n";
+            $response="CON enter Acct. No.\n";
            
         }
-        if(isset($level[0]) && $level[0] == 1  && isset($level[1]))
+        if(isset($level[0]) && $level[0] == 2  && isset($level[1])  && isset($level[2]))
         {
             
-            $response="END thanks \n";
-            $response .="Request Confirmed \n";
+            $response="END Transaction Successfull \n";
+            $response .="thanks for patronage \n";
            
         }
             header('Content-type: text/plain');
