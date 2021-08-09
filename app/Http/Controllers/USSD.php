@@ -64,7 +64,7 @@ class USSD extends Controller
             $response .= "0. RETOUR";
         }
 
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 || $level[4] == 2 && !isset($level[5]))
+        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 && !isset($level[5]))
         {
             $response="CON Vour serez debite de 100FCFA pour benefide 180Mo valable pour tout Facebook, Twitter, Whatapp et Viber 1 jour.\n";
             $response .="1. Confirmer\n";
