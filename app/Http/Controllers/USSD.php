@@ -28,7 +28,7 @@ class USSD extends Controller
         }
         if(isset($level[0]) && $level[0] == 3 && !isset($level[1]))
         {
-            $response="END INTERNET MOBILE \n";
+            $response="CON Internet Mobile: \n";
             $response .= "1. Acheter un forfait \n";
             $response .= "2. Consultation volume \n";
             $response .= "3. Plus d'informations \n";
@@ -36,21 +36,43 @@ class USSD extends Controller
             $response .= "5. Facebook Flex \n";
             $response .= "0. RETOUR \n";
         }
-        // if(isset($level[0]) && $level[0] == 2 && !isset($level[1]))
-        // {
-        //     $response="CON Select Bank \n";
-        //     $response .="1. GTB\n";
-        //     $response .="2. First Bank \n";
-        //     $response .="3. Access Bank \n";
-        //     $response .="4. FCMB \n";
-        //     $response .= "0. back";
-        // }
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[1]) && !isset($level[3]))
+        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && !isset($level[2]))
         {
-            $response="CON enter Acct. No.\n";
-           
+            $response="CON Acheter un forfait internet \n";
+            $response .="1. Heure\n";
+            $response .="2. Offres Journalueres \n";
+            $response .="3. Offres Hebdomadaires \n";
+            $response .="4. Offres Mensuelles \n";
+            $response .="5. Offres Speciales \n";
+            $response .= "0. RETOUR";
         }
-        if(isset($level[0]) && $level[0] == 2  && isset($level[1])  && isset($level[2]))
+        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && !isset($level[3]))
+        {
+            $response="CON Offres Speciales\n";
+            $response .="1. Nuit Soft 95F: 300Mo valable de 23h a 05h\n";
+            $response .="2. Weekend 550F: 1024Mo \n";
+            $response .="3. Reseaux Sociaux \n";
+            $response .="4. Video \n";
+            $response .= "0. RETOUR";
+        }
+
+        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && !isset($level[4]))
+        {
+            $response="CON Reseaux Sociaux valable pour Facebook, Whatapp, Twitter, Viver\n";
+            $response .="1. Start 100F: 180Mo valable 24heures\n";
+            $response .="2. Jour 100F: 360Mo valable 24heures\n";
+            $response .= "0. RETOUR";
+        }
+
+        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 || $level[4] == 2 && !isset($level[5]))
+        {
+            $response="CON Vour serez debite de 100FCFA pour benefide 180Mo valable pour tout Facebook, Twitter, Whatapp et Viber 1 jour.\n";
+            $response .="1. Confirmer\n";
+            $response .="1. Annuler\n";
+            $response .= "0. RETOUR";
+        }
+
+        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 && isset($level[5]) && $level[5] == 1 && !isset($level[6]))
         {
             
             $response="END Transaction Successfull \n";
