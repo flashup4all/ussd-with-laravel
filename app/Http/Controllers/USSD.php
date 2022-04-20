@@ -15,72 +15,101 @@ class USSD extends Controller
         //if (isset($text)) {
    
         if ( $text == "" ) {
-            $response="CON MOOV\n";
-            $response .= "1. IZY Heures Plus\n";
-            $response .= "2. Moov Folie \n";
-            $response .= "3. Internet Mobile \n";
-            $response .= "4. IZY SMS \n";
-            $response .= "5. International \n";
-            $response .= "6. Roaming \n";
-            $response .= "7. IZY Flex \n";
-            $response .= "8. Offres Perso \n";
+            $response="CON Welcome to Company title\n";
+            $response .= "1. Airtime\n";
+            $response .= "2. History \n";
+            $response .= "3. Top-Up \n";
             $response .= "0. Exit";
         }
-        if(isset($level[0]) && $level[0] == 3 && !isset($level[1]))
+        // foreach($level as $i){
+        //     if ($i == 0){
+        //         header('Content-type: text/plain');
+        //         echo $response;
+        //     }
+        // }
+        if(isset($level[0]) && $level[0] == 1 && !isset($level[1]))
         {
-            $response="CON Internet Mobile: \n";
-            $response .= "1. Acheter un forfait \n";
-            $response .= "2. Consultation volume \n";
-            $response .= "3. Plus d'informations \n";
-            $response .= "4. Acheter pour un tiers \n";
-            $response .= "5. Facebook Flex \n";
-            $response .= "0. RETOUR \n";
+            $response="CON Select Network: \n";
+            $response .= "1. Mtn Eswatini \n";
+            $response .= "2. Eswatini Mobile \n";
+            $response .= "99. Back \n";
         }
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && !isset($level[2]))
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && !isset($level[2]))
         {
-            $response="CON Acheter un forfait internet \n";
-            $response .="1. Heure\n";
-            $response .="2. Offres Journalueres \n";
-            $response .="3. Offres Hebdomadaires \n";
-            $response .="4. Offres Mensuelles \n";
-            $response .="5. Offres Speciales \n";
-            $response .= "0. RETOUR";
+            $response="CON Select Number to Recharge \n";
+            $response .="1. My number\n";
+            $response .="2. Enter number \n";
+            $response .= "99. Back";
         }
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && !isset($level[3]))
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 1 && !isset($level[3]))
         {
-            $response="CON Offres Speciales\n";
-            $response .="1. Nuit Soft 95F: 300Mo valable de 23h a 05h\n";
-            $response .="2. Weekend 550F: 1024Mo \n";
-            $response .="3. Reseaux Sociaux \n";
-            $response .="4. Video \n";
-            $response .= "0. RETOUR";
+            $response="CON Enter Amounnt \n";
         }
 
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && !isset($level[4]))
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 1 && isset($level[3]) && !isset($level[4]))
         {
-            $response="CON Reseaux Sociaux valable pour Facebook, Whatapp, Twitter, Viver\n";
-            $response .="1. Start 100F: 180Mo valable 24heures\n";
-            $response .="2. Jour 100F: 360Mo valable 24heures\n";
-            $response .= "0. RETOUR";
+            $response="CON Pay using MOMO \n";
+            $response .="1. Yes\n";
+            $response .="2. No \n";
+            $response .= "0. Exit";
         }
 
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 && !isset($level[5]))
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 1 && isset($level[3]) && isset($level[4]) && isset($level[4]) == 1 && !isset($level[5]))
         {
-            $response="CON Vour serez debite de 100FCFA pour benefide 180Mo valable pour tout Facebook, Twitter, Whatapp et Viber jour.\n";
-            $response .="1. Confirmer\n";
-            $response .="2. Annuler\n";
-            $response .= "0. RETOUR";
+            $response="CON Enter MOMO PIN \n";
         }
 
-        if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 && isset($level[5]) && $level[5] == 1 && !isset($level[6]))
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 1 && isset($level[3]) && isset($level[4]) && isset($level[4]) == 1 && isset($level[5])  && !isset($level[6]))
         {
+            $response="END Account has been recharged with the sum of #$level[3]\n thanks";
+        }
+
+        #not my number case
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 2 && !isset($level[3]))
+        {
+            $response="CON Enter Mobile Number \n";
+        }
+
+
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 2 && isset($level[3]) && !isset($level[4]))
+        {
+            $response="CON Enter Amount to recharge eg(#100)\n";
+        }
+
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 2 && isset($level[3]) && isset($level[4]) && !isset($level[5]))
+        {
+            $response="CON Pay using MOMO \n";
+            $response .="1. Yes\n";
+            $response .="0. No \n";
+            $response .= "0. Exit";
+        }
+
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 2 && isset($level[3]) && isset($level[4]) && isset($level[5]) && isset($level[5]) == 1 && !isset($level[6]))
+        {
+            $response="CON Enter MOMO PIN \n";
+        }
+
+        if(isset($level[0]) && $level[0] == 1 && isset($level[1]) && ($level[1] == 1 || $level[1] == 2) && isset($level[2]) && $level[2] == 2 && isset($level[3]) && isset($level[4]) && isset($level[5])&& isset($level[5]) == 1 && isset($level[6]) && !isset($level[7]))
+        {
+            $response="END Account has been recharged with the sum of #$level[4]\n thanks";
+        }
+
+        // if(isset($level[0]) && $level[0] == 3 && isset($level[1]) && $level[1] == 1 && isset($level[2]) && $level[2] == 5 && isset($level[3]) && $level[3] == 3 && isset($level[4]) && $level[4] == 1 && isset($level[5]) && $level[5] == 1 && !isset($level[6]))
+        // {
             
-            $response="END Transaction Successfull \n";
-            $response .="thanks for patronage \n";
+        //     $response="END Transaction Successfull \n";
+        //     $response .="thanks for patronage \n";
            
-        }
+        // }
             header('Content-type: text/plain');
             echo $response;
         //}
+    }
+
+    public static function add_menu($menu, $menu_item){
+
+    }
+    public static function base_menu($title){
+        $response="CON $title \n";
     }
 }
